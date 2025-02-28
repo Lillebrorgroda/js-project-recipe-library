@@ -72,10 +72,20 @@ input.filter-btn:hover {
 
 }
 
+input.filter-btn.selectedButton {
+  background: #0018A4;
+  color: #FFF;
+}
+
 input.sort-btn:hover {
   background: #FF6589;
   color: #FFF;
 
+}
+
+input.sort-btn.selectedButton {
+  background: #FF6589;
+  color: #FFF;
 }
 
 
