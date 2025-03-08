@@ -238,17 +238,26 @@ const selectedSorting = (userSelectedSorting, button) => {
 const loadRecipies = (recipesArray) => {
   recipesContainer.innerHTML = '' //resets the container before we load recepies
   recipesArray.forEach(recept => {
-    recipesContainer.innerHTML += ` <div class="card">
+    recipesContainer.innerHTML += ` <a href=${recept.sourceUrl}><div class="card">
         <img src=${recept.image} alt=${recept.title}>
-        <h2>Temporary placeholder for recipe</h2>
+        <h2>${recept.title}</h2>
         <p>Cousine: ${recept.cuisine}</p>
         <p>Time: ${recept.readyInMinutes} minutes</p>
+        <p>Servings: ${recept.servings}</p>
+        <p>Diet: ${recept.diets}</p>
         <p>Ingredients:<ul>${recept.ingredients}</ul></p>
-      </div>`
+        <p>Price per serving: ${recept.pricePerServing} dollar</p>
+        <p>Popularity: ${recept.popularity}</p>
+      
+        
+      </div>  </a>`
 
   });
 
 }
+
+
+
 
 loadRecipies(recipes)
 
