@@ -262,11 +262,16 @@ const loadRecipies = (recipesArray) => {
 
 // 1. a function to filter on cuisine
 
-const filtrateRecipies = () => {
-  //go trough all dogs and return the recipies with a spesifik cuisine
-  const filteredRecipies = recipes.filter(meal => meal.cuisine === "Asian")
-  console.log("Detta är de filtrerade recepten", filteredRecipies)
-  loadRecipies(filteredRecipies)
+const filtrateRecipies = (value) => {
+
+  if (value.toLowerCase() === "all") {
+    loadRecipies(recipes)
+  } else {
+    const filteredRecipies = recipes.filter(meal => meal.cuisine.toLowerCase() === value.toLowerCase())
+    loadRecipies(filteredRecipies)
+  }
+
+
 }
 
 
@@ -288,35 +293,42 @@ descendingButton.addEventListener("click", () => {
 
 
 // Event listeners for kitchen filter
+allFood.addEventListener("click", () => {
+  filtrateRecipies("all")
+  allFood.classList.toggle("selectedButton")
+})
 mediterraneanFood.addEventListener("click", () => {
   console.log("Button  for Mediterranean food is clicked")
   selectedFood("mediterranean")
+  filtrateRecipies("mediterranean")
   mediterraneanFood.classList.toggle("selectedButton")
 })
 
 middleEasternFood.addEventListener("click", () => {
   console.log("Button for Middle Eastern food is clicked")
   selectedFood("middle-eastern")
+  filtrateRecipies("middle eastern")
   middleEasternFood.classList.toggle("selectedButton")
 })
 
-asianFood.addEventListener("click", filtrateRecipies)
-
-// asianFood.addEventListener("click", () => {
-//   console.log("Button for Asian food is clicked")
-//   selectedFood("asian")
-//   asianFood.classList.toggle("selectedButton")
-// })
+asianFood.addEventListener("click", () => {
+  console.log("Button for Asian food is clicked")
+  selectedFood("asian")
+  filtrateRecipies("Asian")
+  asianFood.classList.toggle("selectedButton")
+})
 
 italianFood.addEventListener("click", () => {
   console.log("Button for Italian food is clicked")
   selectedFood("italian")
+  filtrateRecipies("italian")
   italianFood.classList.toggle("selectedButton")
 })
 
 mexicanFood.addEventListener("click", () => {
   console.log("Button for mexican food is clicked")
   selectedFood("mexican")
+  filtrateRecipies("mexican")
   mexicanFood.classList.toggle("selectedButton")
 
 })
