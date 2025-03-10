@@ -3,11 +3,13 @@
 const messageBox = document.getElementById("more-filter")
 
 //Varibles
+const allFood = document.getElementById("all")
 const mediterraneanFood = document.getElementById("mediterranean")
 const middleEasternFood = document.getElementById("middle-eastern")
 const asianFood = document.getElementById("asian")
 const italianFood = document.getElementById("italian")
 const mexicanFood = document.getElementById("mexican")
+const randomFood = document.getElementById("random")
 const ascendingButton = document.getElementById("ascending")
 const descendingButton = document.getElementById("descending")
 const recipesContainer = document.getElementById("recipe-container")
@@ -236,7 +238,7 @@ const selectedSorting = (userSelectedSorting, button) => {
 
 //List of ingridients must be fixed!
 const loadRecipies = (recipesArray) => {
-  recipesContainer.innerHTML = '' //resets the container before we load recepies
+  recipesContainer.innerHTML = "" //resets the container before we load recepies
   recipesArray.forEach(recept => {
     recipesContainer.innerHTML += ` <a href=${recept.sourceUrl}><div class="card">
         <img src=${recept.image} alt=${recept.title}>
@@ -256,10 +258,23 @@ const loadRecipies = (recipesArray) => {
 
 }
 
+// Be able to filter the recipes based on cuisine, diets, cooking time and amount of ingredients and update the results in the DOM
+
+// 1. a function to filter on cuisine
+
+const filtrateRecipies = () => {
+  //go trough all dogs and return the recipies with a spesifik cuisine
+  const filteredRecipies = recipes.filter(meal => meal.cuisine === "Asian")
+  console.log("Detta är de filtrerade recepten", filteredRecipies)
+  loadRecipies(filteredRecipies)
+}
+
 
 
 
 loadRecipies(recipes)
+
+
 
 
 // Event listeners for sorting on time
@@ -285,11 +300,13 @@ middleEasternFood.addEventListener("click", () => {
   middleEasternFood.classList.toggle("selectedButton")
 })
 
-asianFood.addEventListener("click", () => {
-  console.log("Button for Asian food is clicked")
-  selectedFood("asian")
-  asianFood.classList.toggle("selectedButton")
-})
+asianFood.addEventListener("click", filtrateRecipies)
+
+// asianFood.addEventListener("click", () => {
+//   console.log("Button for Asian food is clicked")
+//   selectedFood("asian")
+//   asianFood.classList.toggle("selectedButton")
+// })
 
 italianFood.addEventListener("click", () => {
   console.log("Button for Italian food is clicked")
