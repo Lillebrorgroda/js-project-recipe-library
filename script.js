@@ -278,6 +278,14 @@ const sortRecipes = (ascending = true) => {
   loadRecipies(recipes)
 }
 
+const generateRandomRecipies = () => {
+  const randomIndex = Math.floor(Math.random() * recipes.length)
+  const randomRecipe = recipes[randomIndex];
+
+  loadRecipies([randomRecipe])
+  console.log("Random recipie: ", randomRecipe)
+}
+
 loadRecipies(recipes)
 
 
@@ -294,6 +302,11 @@ descendingButton.addEventListener("click", () => {
 
 
 // Event listeners for kitchen filter
+randomFood.addEventListener("click", () => {
+  generateRandomRecipies()
+  randomFood.classList.toggle("selectedButton")
+})
+
 allFood.addEventListener("click", () => {
   filtrateRecipies("all")
   allFood.classList.toggle("selectedButton")
