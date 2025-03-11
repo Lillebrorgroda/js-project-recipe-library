@@ -255,12 +255,7 @@ const loadRecipies = (recipesArray) => {
       </div>  </a>`
 
   });
-
 }
-
-// Be able to filter the recipes based on cuisine, diets, cooking time and amount of ingredients and update the results in the DOM
-
-// 1. a function to filter on cuisine
 
 const filtrateRecipies = (value) => {
 
@@ -270,25 +265,31 @@ const filtrateRecipies = (value) => {
     const filteredRecipies = recipes.filter(meal => meal.cuisine.toLowerCase() === value.toLowerCase())
     loadRecipies(filteredRecipies)
   }
-
-
 }
 
+//Sorting on ascending and decending
 
+const compareTime = (a, b) => {
+  return a.readyInMinutes - b.readyInMinutes
+}
 
+const sortRecipes = (ascending = true) => {
+  recipes.sort((a, b) => ascending ? compareTime(a, b) : compareTime(b, a));
+  loadRecipies(recipes)
+}
 
 loadRecipies(recipes)
 
 
-
-
 // Event listeners for sorting on time
 ascendingButton.addEventListener("click", () => {
-  selectedSorting("ascending", ascendingButton);
-});
+  selectedSorting("ascending", ascendingButton)
+  sortRecipes(ascending)
+})
 
 descendingButton.addEventListener("click", () => {
-  selectedSorting("descending", descendingButton);
+  selectedSorting("descending", descendingButton)
+  sortRecipes(false)
 });
 
 
