@@ -175,6 +175,22 @@ const recipes = [
   }
 ]
 
+//Varibles for fetching data
+
+const URL = "https://api.spoonacular.com/recipes/random?apiKey=11307b44ec204bb4aba527e2affcfab0"
+const BASE_URL = "https://api.spoonacular.com/recipes/"
+
+const fetchRecipeData = () => {
+  fetch(URL)
+    .then((response) => {
+      console.log("Respons", response)
+      return response.json()
+    })
+    .then((data) => console.log("What is data now:", data))
+}
+
+fetchRecipeData()
+
 //Functions
 
 const selectedFood = (userSelectedFood) => {
@@ -196,30 +212,6 @@ const selectedFood = (userSelectedFood) => {
 
   messageBox.innerHTML += `<p>${declarationOfFoodChoice}</p>`
 }
-
-// const selectedSorting = (userSelectedSorting) => {
-//   let declarationOfSelectedSorting = ""
-
-//   if (userSelectedSorting === "ascending") {
-//     declarationOfSelectedSorting = `You want to impress on someone`
-//   } else {
-//     declarationOfSelectedSorting = `You in a hurry mate`
-//   }
-
-//   messageBox.innerHTML += `<p>${declarationOfSelectedSorting}</p>`
-// }
-
-// ascendingButton.addEventListener("click", () => {
-//   selectedSorting("ascending")
-//   ascendingButton.classList.toggle("selectedButton")
-// })
-
-// descendingButton.addEventListener("click", () => {
-//   selectedSorting("descending")
-//   descendingButton.classList.toggle("selectedButton")
-// })
-
-
 
 const selectedSorting = (userSelectedSorting, button) => {
   let declarationOfSelectedSorting = userSelectedSorting === "ascending"

@@ -1,17 +1,11 @@
-/* 4 cards bredd, dark blue/pink selected ingen transparans, hover border i kontrastfärg samt skugga, default skugga och ljusare eller samma som hover. valt kort skall ha dropshadow */
-
 body {
   background: #FAFBFF;
-  /* margin: 0; */
   font-family: "Roboto Condensed", serif;
 }
-
-
 
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  /* grid-template-rows: 1fr 0.5fr 1.5fr; */
   grid-template-areas:
     "header header header header"
     "filter-and-sort filter-and-sort filter-and-sort filter-and-sort"
@@ -20,8 +14,6 @@ body {
 
 .header {
   grid-area: header;
-
-
 }
 
 h1 {
@@ -30,9 +22,6 @@ h1 {
   margin: 64px 0 64px 32px;
 }
 
-h2 {
-  font-size: 22px;
-}
 
 .filter-and-sort {
   grid-area: filter-and-sort;
@@ -40,14 +29,10 @@ h2 {
   flex-direction: column;
   margin: 16px 0;
   gap: 16px;
-
-
-
-
 }
 
 input[type="button"] {
-  border: none;
+  border: 2px solid transparent;
   border-radius: 50px;
   background: #CCFFE2;
   padding: 8px 16px;
@@ -56,7 +41,9 @@ input[type="button"] {
   font-size: 24px;
   margin: 5px 0;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
+
 
 input.sort-btn {
   background: #FFECEA;
@@ -64,12 +51,11 @@ input.sort-btn {
 
 input[type="button"]:hover {
   border: 2px solid #0018A4;
-
+  transform: scale(1.05);
 }
 
 input.filter-btn:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 input.filter-btn.selectedButton {
@@ -98,7 +84,7 @@ input.sort-btn.selectedButton {
 }
 
 .card {
-  border: 3px solid #0018A4;
+  border: 2px solid transparent;
   padding: 16px;
   padding-bottom: 24px;
   border-radius: 16px;
@@ -106,14 +92,13 @@ input.sort-btn.selectedButton {
   background: #FFF;
   cursor: pointer;
   margin: 10px 0;
-
+  transition: all 0.1s ease-in-out;
 
 }
 
 .card:hover {
-
   border: 2px solid #0018A4;
-  box-shadow: 0px 0px 30px 0px rgba(0, 24, 164, 0.20);
+  box-shadow: 0px 0px 15px 0px rgba(0, 24, 164, 0.20);
 }
 
 img {
