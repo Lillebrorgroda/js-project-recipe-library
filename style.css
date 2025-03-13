@@ -1,19 +1,22 @@
 body {
   background: #FAFBFF;
   font-family: "Roboto Condensed", serif;
+  margin: 0;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    "header header header header"
-    "filter-and-sort filter-and-sort filter-and-sort filter-and-sort"
-    "recipe-card recipe-card recipe-card recipe-card";
+    "header"
+    "filter-and-sort"
+    "recipe-card";
 }
 
 .header {
   grid-area: header;
+
+
 }
 
 h1 {
@@ -29,6 +32,7 @@ h1 {
   flex-direction: column;
   margin: 16px 0;
   gap: 16px;
+
 }
 
 input[type="button"] {
@@ -74,14 +78,22 @@ input.sort-btn.selectedButton {
   color: #FFF;
 }
 
+.recipe-card {
+  display: grid;
+  grid-area: recipe-card;
+  flex-direction: column;
+  align-items: center;
+
+}
 
 .more-filter {
-  grid-area: more-filter;
   border: 3px solid #0018A4;
   height: 250px;
   border-radius: 16px;
   padding: 16px;
 }
+
+
 
 .card {
   border: 2px solid transparent;
@@ -94,6 +106,8 @@ input.sort-btn.selectedButton {
   margin: 10px 0;
   transition: all 0.1s ease-in-out;
 
+
+
 }
 
 .card:hover {
@@ -104,6 +118,7 @@ input.sort-btn.selectedButton {
 img {
   height: 200px;
   border-radius: 12px;
+  width: 100%;
 }
 
 a {
@@ -111,21 +126,19 @@ a {
   color: black;
 }
 
-@media only screen and (min-width: 600px) {}
 
-
-@media only screen and (min-width: 768px) {
+@media (min-width: 601px) and (max-width: 900px) {
   .recipe-card {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 16px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "more-filter . . ."
-      "more-filter . . ."
-      "more-filter . . .";
-    grid-area: recipe-card;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+  }
+}
 
+@media (min-width: 901px) {
+  .recipe-card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
   }
 }
